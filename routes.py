@@ -41,7 +41,7 @@ async def update_article(request: RequestArticle, db: Session = Depends(get_db))
                     result=_article).dict(exclude_none=True)
 
 
-@router.delete('/delete/{id}')
+@router.delete('/delete')
 async def delete(id: int, db: Session = Depends(get_db)):
     crud.remove_article(db, article_id=id)
     return Response(code=200, status='Ok', message='Successfull delete article').dict(exclude_none=True)

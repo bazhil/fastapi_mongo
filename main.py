@@ -1,12 +1,12 @@
 from fastapi import FastAPI
 from models import Article
-from config import engine
+from config import engine, Base
 import models
-from router import router
+from routes import router
 from schemas import ArticleSchema
 from sqlalchemy.orm import Session
 
-models.Base.metadata.create_all(bind=engine)
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
@@ -16,7 +16,7 @@ async def index():
     return {'message': 'Welcome Home!'}
 
 
-app.include_router(router, prefix='article', tags=['article'])
+app.include_router(router, prefix='/article', tags=['article'])
 
 # @app.get('/acticles/{id}')
 # async def get_article(id: int):
