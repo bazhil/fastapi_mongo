@@ -5,6 +5,6 @@ class Article(Base):
     __tablename__ = 'article'
 
     id = Column(Integer, primary_key=True, index=True)
-    title = Column(String)
-    description = Column(String)
+    title = Column(String(100))
+    description = Column(String(400))
 
